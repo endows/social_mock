@@ -1,0 +1,18 @@
+body
+  .container-fluid
+    .page-header.text-center
+      h1
+        i.fa.fa-wifi
+        small チャンネル
+    +yield
+    
+template(name='embed')
+  +yield
+
+template(name='layout')
+  .row
+    +input
+  .row
+    each channels
+      +channel
+    +component

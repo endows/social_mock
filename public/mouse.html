@@ -1,0 +1,50 @@
+<script src='https://code.jquery.com/jquery-2.1.4.min.js'></script>
+<div id="mouse" style="border-radius: 50%; position: absolute;height: 20px;width: 20px;background-color: blue;"></div>
+<canvas id="canvas" style="background:black;"></canvas>
+<script>
+var canvas = document.getElementById("canvas");
+canvas.width = $(window).width();
+canvas.height = $(window).height();
+
+var canvas = document.querySelector("#canvas");
+var ctx = canvas.getContext("2d");
+var mouseX;
+var mouseY;
+
+var kule = {
+    cx: 100,
+    cy: 100,
+    vy: 2,
+    vx: 2,
+    r: 5,
+    e: 1,
+    color: "cyan"
+};
+
+var startTime = (new Date()).getTime();
+var rotationSpeed = 500; // Milliseconds for a full turn
+var orbitRadius = 75;
+function draw() {
+    var boundsX = canvas.width;
+    var boundsY = canvas.height;
+    ctx.clearRect(0, 0, boundsX, boundsY);
+    ctx.fillStyle = kule.color;
+
+    var currentTime = (new Date()).getTime();
+    var passedTime = currentTime - startTime;
+    var angle = Math.PI * 2 * (passedTime / rotationSpeed);
+
+    ctx.beginPath();
+    ctx.arc(mouseX + Math.cos(angle) * orbitRadius, mouseY + Math.sin(angle) * orbitRadius, kule.r, 0, Math.PI * 2);
+    ctx.fill();
+}
+setInterval(draw, 10);
+$(document).on("mousemove", function (event) {
+    mouseX = event.pageX;
+    mouseY = event.pageY;
+    $("#mouse").animate({
+        left: mouseX - 10,
+        top: mouseY - 10
+    }, 0);
+});
+</script>

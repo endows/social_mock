@@ -1,0 +1,9 @@
+template(name='post')
+  .media
+    .media-left
+      a(href='#')
+        img.thumb.img-rounded.media-object(src='https://pbs.twimg.com/profile_images/600822240414830593/1WWaBHp5_bigger.jpg', alt='...')
+    .media-body
+      p {{body}}
+      if content_url
+        iframe(width='100%', height='300', src='{{content_url}}', allowfullscreen='allowfullscreen', frameborder='0')

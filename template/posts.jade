@@ -1,0 +1,12 @@
+template(name='posts')
+  .container
+    .row
+      .col-md-12
+        .list-group
+          .list-group-item
+            h3
+              i.fa.fa-globe
+              small webRPGtool
+          each posts
+            .list-group-item
+              +post

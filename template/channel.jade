@@ -1,0 +1,10 @@
+template(name='channel')
+  .col-md-4
+    .list-group
+      .list-group-item
+        h4
+          i.fa.fa-wifi
+          |{{name}}
+      each posts
+        .list-group-item
+          +post
